@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/heshamnawaz/Downloads/metric-flow-example'
+make: Leaving directory `/Users/heshamnawaz/Downloads/metric-flow-example'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
