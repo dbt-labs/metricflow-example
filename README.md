@@ -1,6 +1,6 @@
 # MetricFlow Example Repo
 
-This repository provides an example of an end-to-end deployment of MetricFlow. You will need to have the following installed on your device:
+This repository provides an example of an end-to-end deployment of MetricFlow. The example repo uses the following tools:
 
 * [Docker](https://www.docker.com/products/docker-desktop/)
 * [MetricFlow](https://github.com/transform-data/metricflow)
@@ -10,7 +10,7 @@ This repository provides an example of an end-to-end deployment of MetricFlow. Y
 
 ## Installation
 
-Download this repository (Add link)
+Download this repository
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install metricflow.
 
@@ -41,7 +41,7 @@ Run
 mf tutorial
 ```
 
-Navigate to the template file created earlier and fill it out with the following
+Navigate to the config.yml file in the .metricflow directory created earlier and fill it out with the following
 ```yml
 dwh_schema: 'transform'
 model_path: /Users/{username}/.metricflow/sample_models  # Path to directory containing defined models (Leave until after DWH setup). Specify the username for your system
@@ -99,24 +99,19 @@ mf materialize --materialization-name example_materialization
 
 You can run mf list-materializations to verify that the materialization was created successfully. 
 
-You can also query this materialization using the PostgreSQL CLI by running
-```
- psql -s mydb
-```
-
 ## Using MetricFlow with Metabase
-You can navigate to [localhost:3000](localhost:3000) to access Metabase.
+You can navigate to localhost:3000 in your browser to access Metabase.
 
 You can also open it from the Containers section in Docker
 
-![](https://drive.google.com/file/d/1S1ZAnx3_5PfwsXXBHvbsuSSMTn6qz_0e/view?usp=sharing)
+![](assets/open_in_browser.png)
 
 Enter your login information when prompted. 
 To add your data, select PostgreSQL and fill out the fields with the following:\
 **Display name**: ExampleDB\
 **Host**: 127.0.0.1\
 **Port**: 5432\
-**Database name**: \<Container ID> (To obtain this, run 'docker ps' and copy the Container ID that corresponds to the Postgres image)  
+**Database name**: \<Container ID> (To obtain this, run 'docker ps' and copy the Container ID that corresponds to the Postgres image)![](assets/container_id.png)
 **Username**: metricflow\
 **Password**: metricflowing
 
@@ -124,7 +119,7 @@ Once Metabase is open, using the Browse data tab on the left, navigate to Exampl
 
 After you've navigated to the correct table, you can create visualizations using the Visualizations button on the bottom-left. You can also create a dashboard and add your visualizations there.
 
-![](https://drive.google.com/file/d/1XYNnk4upLyv24HIfIeUNshiJ8s8B3SIq/view?usp=sharing)
+![](assets/dashboard.png)
 
 Pictures of Examples
 
