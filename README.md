@@ -8,40 +8,41 @@ This repository provides an example of an end-to-end deployment of MetricFlow. T
 * [Python 3.9](https://www.python.org/downloads/)
 * [Metabase](https://www.metabase.com/docs/latest/operations-guide/running-metabase-on-docker.html)
 
+You will need to install Docker and Python to follow this guide.
+
 ## Installation
 
-Download this repository
-
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install metricflow.
+Download this repository and use the package manager [pip](https://pip.pypa.io/en/stable/) to install metricflow.
 
 ```bash
 pip install metricflow
 ```
 
-Navigate to metricflow/local-data-warehouses/postgresql using
+Open the Docker Desktop application and provide all relevant permissions. Once Docker is running, navigate to the following directory
 ```bash
-cd metricflow/local-data-warehouses/postgresql
+cd metricflow-example/metricflow/local-data-warehouses/postgresql
 ```
 and then run
 ```bash
 docker-compose up
 ```
+This will spin up the PostgreSQL and Metabase containers.
 
-Run 
+To initialize MetricFlow, open another terminal window and run 
 ```bash
 mf setup
 ```
 
-It will ask you to enter your data warehouse dialect. Enter postgresql. 
+Enter 'postgresql' as your data warehouse dialect when prompted. 
 
 A template file will be created. If you've run this before, it will say "a template config already exists in \<location>. 
 
-Run 
+To create the sample_models directory, run 
 ```bash
 mf tutorial
 ```
 
-Navigate to the config.yml file in the .metricflow directory created earlier and fill it out with the following
+Navigate to the config.yml file in the .metricflow directory created earlier and fill it out with the following, changing the username to the corresponding one for your system.
 ```yml
 dwh_schema: 'transform'
 model_path: /Users/{username}/.metricflow/sample_models  # Path to directory containing defined models (Leave until after DWH setup). Specify the username for your system
@@ -97,7 +98,13 @@ Then, run
 mf materialize --materialization-name example_materialization
 ```
 
-You can run mf list-materializations to verify that the materialization was created successfully. 
+You can continue without specifying a start_time.
+
+To verify that the materialization was created successfully, run 
+```
+mf list-materializations
+``` 
+
 
 ## Using MetricFlow with Metabase
 You can navigate to localhost:3000 in your browser to access Metabase.
@@ -107,24 +114,31 @@ You can also open it from the Containers section in Docker
 ![](assets/open_in_browser.png)
 
 Enter your login information when prompted. 
+
 To add your data, select PostgreSQL and fill out the fields with the following:\
 **Display name**: ExampleDB\
-**Host**: 127.0.0.1\
+**Host**: \<Container ID> 
+(Note: to obtain this, run 'docker ps' and copy the Container ID that corresponds to the Postgres image)![](assets/container_id.png)\
 **Port**: 5432\
-**Database name**: \<Container ID> (To obtain this, run 'docker ps' and copy the Container ID that corresponds to the Postgres image)![](assets/container_id.png)
+**Database name**: metricflow\
 **Username**: metricflow\
 **Password**: metricflowing
 
-Once Metabase is open, using the Browse data tab on the left, navigate to ExampleDB/transform /\<Materialization Name>
+All other settings can remain unchanged. Click 'Next' to open Metabase, and then using the Browse data tab on the left, navigate to ExampleDB/transform/Example Materialization.
 
-After you've navigated to the correct table, you can create visualizations using the Visualizations button on the bottom-left. You can also create a dashboard and add your visualizations there.
+After you've navigated to the correct table, you can create visualizations using the Visualizations button on the bottom-left. Choose a visualization type from the menu and select the parameters for the visualization.
+![](assets/parameters.png)
+Once you have created the visualization, you can save it and add it to a dashboard. 
+
+![](assets/save.png)
+
+You can also create a new visualization (Question) or dashboard by clicking the 'New' button on the top-right. These additional visualizations can also then be added to the previously created dashboard.
+
 
 ![](assets/dashboard.png)
 
-Pictures of Examples
-
 ## Using MetricFlow with Python
-Explainer and link to Jupyter Notebook
+This repository also contains a [Jupyter Notebook](Python/python_notebook.ipynb) showing how to use the MetricFlow Python API to query metrics and dimensions. 
 
 ## Additional Resources
 [Metabase tutorial](https://www.metabase.com/learn/getting-started/getting-started.html)
