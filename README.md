@@ -35,7 +35,7 @@ mf setup
 
 Enter 'postgresql' as your data warehouse dialect when prompted. 
 
-A template file will be created. If you've run this before, it will say "a template config already exists in \<location>. 
+A template file will be created. If you've run this before, it will say "a template config already exists in \<location>". If it already exists, replace that file with the config file below.
 
 To create the sample_models directory, run 
 ```bash
@@ -113,9 +113,7 @@ You can also open it from the Containers section in Docker
 
 ![](assets/open_in_browser.png)
 
-Enter your login information when prompted. 
-
-To add your data, select PostgreSQL and fill out the fields with the following:\
+You will be prompted to go through the Metabase onboarding flow; once that's compeleted, you can add your data by selecting PostgreSQL and filling out the fields with the following:\
 **Display name**: ExampleDB\
 **Host**: \<Container ID> 
 (Note: to obtain this, run 'docker ps' and copy the Container ID that corresponds to the Postgres image)![](assets/container_id.png)\
