@@ -1,5 +1,5 @@
 materialization:
-  name: hesham_materialization # name your materialization. this will be the table name written in your data warehouse.
+  name: example_materialization # name your materialization. this will be the table name written in your data warehouse.
   description: test description # add an optional description.
   metrics: # list all the metrics you want to materialize in your materialization. all metrics must be defined in your metrics.yaml.
     - cancellations
@@ -23,7 +23,7 @@ materialization:
 # MQL will try to create / drop this table as needed. It's recommended that the
 # permissions of the user associated with the MQL server be configured to have
 # limited permissions.
-  destination_table: transform.hesham_materialization
+  destination_table: transform.example_materialization
 
 # Optional destinations:
 # Materializations always write to the datawarehouse.

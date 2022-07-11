@@ -61,7 +61,7 @@ MetricFlow supports PostgreSQL which means you can use it without having to set 
 
 More information about materializations in MetricFlow can be found [here](https://docs.transform.co/docs/metricflow/reference/materializations/#what-are-materializations-in-metricflow).
 
-To create the materialization, navigate to the model_path specified in the previous step and save [this file](https://drive.google.com/file/d/1hVJUSauvap91Ihe18qqR7xi0YEfWmOfq/view?usp=sharing) to that location. You can also create the materialization.yaml file manually and fill it out with the following:
+To create the materialization, navigate to the model_path specified in the previous step and save [this file](materialization.yaml) to that location. You can also create the materialization.yaml file manually and fill it out with the following:
 ```yml
 materialization:
   name: example_materialization # name your materialization. this will be the table name written in your data warehouse.
