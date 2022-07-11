@@ -18,11 +18,8 @@ Download this repository and use the package manager [pip](https://pip.pypa.io/e
 pip install metricflow
 ```
 
-Open the Docker Desktop application and provide all relevant permissions. Once Docker is running, navigate to the following directory
-```bash
-cd metricflow-example/metricflow/local-data-warehouses/postgresql
-```
-and then run
+Open the Docker Desktop application and provide all relevant permissions. Once Docker is running, 
+run
 ```bash
 docker-compose up
 ```
