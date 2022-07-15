@@ -1,0 +1,36 @@
+version: "3.7"
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    hostname: postgres
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "metricflow"
+      POSTGRES_PASSWORD: "metricflowing"
+      POSTGRES_DB: "metricflow"
+    networks:
+      - metanet1-secrets
+  metabase-secrets:
+    image: metabase/metabase:latest
+    container_name: metabase-secrets
+    hostname: metabase-secrets
+    ports:
+      - 3000:3000
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: metricflow
+      MB_DB_PORT: 5432
+      MB_DB_USER: metricflow
+      MB_DB_PASS: metricflowing
+      MB_DB_HOST: postgres
+    networks:
+      - metanet1-secrets
+    depends_on:
+      - postgres
+networks:
+  metanet1-secrets:
+    driver: bridge

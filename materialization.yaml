@@ -1,0 +1,42 @@
+materialization:
+  name: example_materialization # name your materialization. this will be the table name written in your data warehouse.
+  description: test description # add an optional description.
+  metrics: # list all the metrics you want to materialize in your materialization. all metrics must be defined in your metrics.yaml.
+    - cancellations
+    - cancellation_rate
+    - revenue_usd
+    - cancellations_mx
+    - transaction_usd_na
+    - transaction_usd_l7d_mx
+    - transaction_usd_mtd
+    - transaction_usd_na_l7d
+    - transaction_amount_usd
+    - transactions
+    - quick_buy_amount_usd
+    - new_customers
+
+
+  dimensions: # list all corresponding dimensions you want to include for these metrics. these must all be defined in your data sources.
+    - ds
+
+# Optionally, specify the name of the schema and the table for the materialization.
+# MQL will try to create / drop this table as needed. It's recommended that the
+# permissions of the user associated with the MQL server be configured to have
+# limited permissions.
+  destination_table: transform.example_materialization
+
+# Optional destinations:
+# Materializations always write to the datawarehouse.
+# Optionally provide additional destinations for the materialization and rollup
+  destinations:
+    - location: DW
+      format: WIDE
+
+    # - location: FAST_CACHE
+    #   format: WIDE
+    #   rollups:
+    #     - [ds]
+
+ #   format: WIDE # WIDE is the only supported option currently
+ #   dimension_sets: # rollups allow you to create separate tables that group by a subset of the dimensions in your materialization
+ #   [ds] # add a dimension you want to a rollup by. this should be a subset of the dimensions you list in your materialization. These rollups will be stored in separate tables than the core materializations
