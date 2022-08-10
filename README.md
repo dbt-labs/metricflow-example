@@ -133,7 +133,15 @@ You can also create a new visualization (Question) or dashboard by clicking the 
 ![](assets/dashboard.png)
 
 ## Using MetricFlow with Python
-This repository also contains a [Jupyter Notebook](Python/python_notebook.ipynb) showing how to use the MetricFlow Python API to query metrics and dimensions. 
+This repository also contains a [Jupyter Notebook](Python/python_notebook.ipynb) showing how to use the MetricFlow Python API to query metrics and dimensions.
+
+## Using MetricFlow with dbt
+
+dbt (data build tool) is a command line tool that lets you transform data in your warehouses. Transformations . 
+We can 
+This repository contains the following dbt models - 
+dbt run
+dbt natively understands the dependencies between all models, it can do powerful things like run models in dependency order
 
 ## Additional Resources
 [Metabase tutorial](https://www.metabase.com/learn/getting-started/getting-started.html)
