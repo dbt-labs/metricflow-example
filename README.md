@@ -150,5 +150,5 @@ You can build the tables by navigating to [metricflow_example_dbt](metricflow_ex
 The [dbt_configs](dbt_configs) folder contains MetricFlow configuration files that use the aforementioned dbt models as data sources and create the semantic data layer on top of them. You can check that these config files work as intended by going to the config.yml file in the .metricflow directory, changing the model_path to [dbt_configs](dbt_configs) (specify full path based on your system) and then running `mf validate-configs`.
 
 ## Additional Resources
-[Metabase tutorial](https://www.metabase.com/learn/getting-started/getting-started.html)
-[dbt models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models)
+* [Metabase tutorial](https://www.metabase.com/learn/getting-started/getting-started.html)
+* [dbt models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models)
