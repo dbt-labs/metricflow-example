@@ -1,0 +1,25 @@
+name: 'transform_dbt_sync'
+version: '0.1.1'
+config-version: 2
+profile: metricflow-example
+require-dbt-version: [">=1.0.0", "<2.0.0"]
+
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+    - "target"
+
+models:
+  transform_dbt_sync:
+    +schema: meta
+    bigquery:
+      +enabled: '{{ target.type == "bigquery" | as_bool }}'
+    default:
+      +enabled: '{{ target.type != "bigquery" | as_bool }}'

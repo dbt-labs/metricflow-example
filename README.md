@@ -133,7 +133,22 @@ You can also create a new visualization (Question) or dashboard by clicking the 
 ![](assets/dashboard.png)
 
 ## Using MetricFlow with Python
-This repository also contains a [Jupyter Notebook](Python/python_notebook.ipynb) showing how to use the MetricFlow Python API to query metrics and dimensions. 
+This repository also contains a [Jupyter Notebook](Python/python_notebook.ipynb) showing how to use the MetricFlow Python API to query metrics and dimensions.
+
+## Using MetricFlow with dbt
+
+[dbt (data build tool)](https://www.getdbt.com/blog/what-exactly-is-dbt/) is a command line tool that lets you transform data in your warehouses. dbt models can be built on top of your data warehouse or on top of other dbt models that you've defined. dbt natively understands the dependencies between all models and is able to run models in dependency order.
+
+This repository contains the following dbt models - 
+* base_tables: demo_countries_base.sql, demo_customers_base.sql, demo_transactions_base.sql
+* transformations: daily_transactions.sql, transactions_by_customer_with_region.sql, transactions_by_customer.sql
+
+The base_tables are dbt models reproducing the sample data that's created in the MetricFlow tutorial. The transformations are dbt models that transform and join the base tables in various ways.
+
+You can build the tables by navigating to [metricflow_example_dbt](metricflow_example_dbt) and running `dbt run` in the terminal.
+
+The [dbt_configs](dbt_configs) folder contains MetricFlow configuration files that use the aforementioned dbt models as data sources and create the semantic data layer on top of them. You can check that these config files work as intended by going to the config.yml file in the .metricflow directory, changing the model_path to [dbt_configs](dbt_configs) (specify full path based on your system) and then running `mf validate-configs`.
 
 ## Additional Resources
-[Metabase tutorial](https://www.metabase.com/learn/getting-started/getting-started.html)
+* [Metabase tutorial](https://www.metabase.com/learn/getting-started/getting-started.html)
+* [dbt models](https://docs.getdbt.com/docs/building-a-dbt-project/building-models)

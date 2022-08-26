@@ -1,0 +1,12 @@
+data_source:
+  name: countries
+  sql_table: dbt_meta.demo_countries_base
+  mutability:
+    type: immutable
+  identifiers:
+    - name: country
+      type: primary
+  dimensions:
+    - name: region
+      description: The region associated with the country.
+      type: categorical
