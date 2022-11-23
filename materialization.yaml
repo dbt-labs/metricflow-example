@@ -17,7 +17,7 @@ materialization:
 
 
   dimensions: # list all corresponding dimensions you want to include for these metrics. these must all be defined in your data sources.
-    - ds
+    - metric_time
 
 # Optionally, specify the name of the schema and the table for the materialization.
 # MQL will try to create / drop this table as needed. It's recommended that the
